@@ -18,6 +18,9 @@ script: ./grailsw test-app --non-interactive
   && ./grailsw test-app "functional:" --non-interactive
   && cd ../../..
   && ./grailsw package-plugin --non-interactive
+after_success: ./grailsw publish-plugin --no-scm --allow-overwrite --non-interactive
 env:
   global:
   - SHAM_CI=true
+  - secure: "zCWY0C560lX5kcDlYdqkWezmZx4CBl/ymC9KBpgDH1u7kMi5KPeKyMlKPOjTIP4vgskxjd6UYyKk5FJ0aNYKawAPwMwTr2V1nxGGBrAYU+ASKo7Ttat1OZSP/cGExLxO5+abQE5Ec+VRBlL0gAvY/w2WuTc2/aU9aNe4g01dQxU="
+  - secure: "iRPruOQ0EgmQmsi3NwxtEurBGMq7+WZ/v4KOgXvhL/bwMrV+mRh7qWK8vVw58A3h2fNYR1S6xqJFHktTLiwKTTZjZlfZUwYuZu8gOtrUCDFAtmUZ1U8AD6LC56ekaAQF4aLmqwI5MSqdYVVxDG0xXYRJDtAL8+LiA96QtAYA9VU="
