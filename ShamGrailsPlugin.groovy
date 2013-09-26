@@ -14,8 +14,8 @@ class ShamGrailsPlugin {
     ]
 
 	def license = "MIT"
-	def issueManagement = [system: 'github', url: 'https://github.com/tomdcc/sham/issues' ]
-	def scm = [ url: "http://svn.grails-plugins.codehaus.org/browse/grails-plugins/" ]
+	def issueManagement = [system: 'github', url: 'https://github.com/tomdcc/grails-sham/issues' ]
+	def scm = [ url: 'https://github.com/tomdcc/grails-sham' ]
 
     def author = "Tom Dunstan"
     def authorEmail = "grails@tomd.cc"
