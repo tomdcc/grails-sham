@@ -1,0 +1,20 @@
+language: groovy
+jdk:
+- openjdk6
+branches:
+  only:
+  - master
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  # if we run on the same box as previous build, make sure target is clean
+  - "rm -rf target test/projects/test21/target"
+install: ./grailsw refresh-dependencies --non-interactive
+  && cd test/projects/test21
+  && ./grailsw refresh-dependencies --non-interactive
+  && cd ../../..
+script: ./grailsw test-app --non-interactive
+  && cd test/projects/test21
+  && ./grailsw test-app functional: --non-interactive
+  && cd ../../..
+  && ./grailsw package-plugin --non-interactive
