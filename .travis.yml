@@ -15,6 +15,9 @@ install: ./grailsw refresh-dependencies --non-interactive
   && cd ../../..
 script: ./grailsw test-app --non-interactive
   && cd test/projects/test21
-  && ./grailsw test-app functional: --non-interactive
+  && ./grailsw test-app "functional:" --non-interactive
   && cd ../../..
   && ./grailsw package-plugin --non-interactive
+env:
+  global:
+  - SHAM_CI=true
