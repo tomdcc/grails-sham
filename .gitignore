@@ -2,3 +2,9 @@ target/
 build/
 plugin.xml
 .settings/
+# intellij stuff
+.idea/
+*.iml
+*.ipr
+*.iws
+*.log

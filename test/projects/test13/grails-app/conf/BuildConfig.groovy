@@ -1,6 +1,9 @@
+grails.project.work.dir = 'target'
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
+
+grails.plugin.location.sham = "../../.."
 
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -15,6 +18,9 @@ grails.project.dependency.resolution = {
         grailsPlugins()
         grailsHome()
         grailsCentral()
+
+		// here to allow testing against snapshot sham code
+		mavenRepo 'https://oss.sonatype.org/content/repositories/snapshots'
     }
     dependencies {
 		def webdriverVersion = '2.33.0'
@@ -31,7 +37,6 @@ grails.project.dependency.resolution = {
 		compile ':tomcat:1.3.9'
 
 		compile ':build-test-data:1.1.2'
-		compile ':sham:0.3.1'
 
 		runtime ':fixtures:1.2'
 

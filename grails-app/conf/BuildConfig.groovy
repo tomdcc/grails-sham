@@ -1,7 +1,9 @@
+grails.project.work.dir = 'target'
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
-//grails.project.war.file = "target/${appName}-${appVersion}.war"
+grails.project.source.level = 1.6
+
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
     inherits("global") {
@@ -14,17 +16,18 @@ grails.project.dependency.resolution = {
         grailsHome()
         grailsCentral()
 
-        // uncomment the below to enable remote dependency resolution
-        // from public Maven repositories
         mavenLocal()
         mavenCentral()
-        //mavenRepo "http://snapshots.repository.codehaus.org"
-        //mavenRepo "http://repository.codehaus.org"
-        //mavenRepo "http://download.java.net/maven/2/"
-        //mavenRepo "http://repository.jboss.com/maven2/"
-    }
+
+		// here to allow testing against snapshot sham code
+		if(System.getenv("SHAM_CI") == 'true' && appVersion.endsWith("-SNAPSHOT")) {
+			println "Using Sonatype OSS snapshot repository. If you are reading this anywhere other than the sham plugin travis CI build, something probably went wrong"
+			mavenRepo 'https://oss.sonatype.org/content/repositories/snapshots'
+		}
+
+	}
     dependencies {
-		compile 'org.shamdata:sham:0.3'
+		compile 'org.shamdata:sham-core:0.4-SNAPSHOT'
 
     }
 
